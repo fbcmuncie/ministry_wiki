@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+
+
+<!-- This month's events -->
+{{ $thismonth := now.Format "January" }}
+{{ partial "month_events" (dict "eventMonth" $thismonth "siteMonths"  .Site.Taxonomies.months "Site" . ) }}
+
+<!-- Next month's events -->
+{{ $nextmonth := (now.AddDate 0 1 0).Format "January"}}
+{{ partial "month_events" (dict "eventMonth" $nextmonth "siteMonths"  .Site.Taxonomies.months "Site" . ) }}
+
+<!-- Third month's events -->
+{{ $thirdmonth := (now.AddDate 0 2 0).Format "January"}}
+{{ partial "month_events" (dict "eventMonth" $thirdmonth "siteMonths"  .Site.Taxonomies.months "Site" . ) }}
+
+<!-- Fourth month's events -->
+{{ $fourthmonth := (now.AddDate 0 3 0).Format "January"}}
+{{ partial "month_events" (dict "eventMonth" $fourthmonth "siteMonths"  .Site.Taxonomies.months "Site" . ) }}
+
+{{ end }}

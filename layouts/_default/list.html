@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<main>
+    <article>
+
+        <h1 class="docs-heading">{{ .Title }}</h1>
+
+        {{ partial "leaders" .}}
+
+        {{.Content}}
+    </article>
+    <ul>
+    {{ range .Pages }}
+        <li>
+          <a href="{{.Permalink}}">{{.Title}}</a>
+        </li>
+    {{ end }}
+    </ul>
+</main>
+
+
+{{ end }}

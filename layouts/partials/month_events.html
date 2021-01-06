@@ -1,0 +1,25 @@
+
+<h4>{{ .eventMonth}}</h4>
+
+{{ $month := .eventMonth }}
+
+{{ range $key, $event := .siteMonths }}
+    {{ if eq $key ($month | lower) }}
+    <ul>
+        {{ range $event.Pages }}
+        <li>
+          <a href="{{.Permalink}}">{{.Title}}</a>    
+          {{ $taxo := "areas" }}
+          {{ range .Param $taxo }}
+                {{ $name := . }}
+                {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+                <a href="{{ .Permalink }}"><span class="badge badge-info">{{ $name }}</a></span>
+                {{ end }}
+          {{ end }}
+        </li>
+        {{end}}
+    </ul>
+    {{end}}
+      
+{{end}}
+

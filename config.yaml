@@ -1,0 +1,13 @@
+baseURL: https://wiki.fbcmuncie.org
+title: Ministry Wiki
+taxonomies:
+  month: months
+  area: areas
+outputs:
+  section:
+    - JSON
+    - HTML
+
+
+
+

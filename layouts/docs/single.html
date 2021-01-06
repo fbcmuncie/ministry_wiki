@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+{{ $taxo := "areas" }}
+
+<h1 class="docs-heading">{{ .Title }}</h1>
+
+<div class="my-4">
+    {{ $taxo := "areas" }}
+    {{ range .Param $taxo }}
+        {{ $name := . }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+            <a href="{{ .Permalink }}"><span class="badge badge-info">{{ $name }}</a></span>
+        {{ end }}
+    {{ end }}
+
+        {{ $taxo := "months" }}
+        {{ range .Param $taxo }}
+        {{ $name := . }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+            <a href="{{ .Permalink }}"><span class="badge badge-secondary">{{ $name }}</a></span>
+        {{ end }}
+    {{ end }}
+</div>
+
+{{ .Content }}
+
+{{ end }}
